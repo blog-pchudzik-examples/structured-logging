@@ -1,0 +1,42 @@
+{
+  "extractors": [
+    {
+      "title": "log_id",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "log_id",
+      "extractor_config": {
+        "regex_value": "\\[(\\w+).*\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "parameters extractor",
+      "extractor_type": "regex",
+      "converters": [
+        {
+          "type": "tokenizer",
+          "config": {}
+        },
+        {
+          "type": "numeric",
+          "config": {}
+        }
+      ],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "parameters",
+      "extractor_config": {
+        "regex_value": "\\[\\w+\\s(.*)\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    }
+  ],
+  "version": "3.1.3"
+}
